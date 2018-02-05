@@ -1,2 +1,2 @@
-# node
-NodeJS app
+# NodeJS application
+Test repository for NodeJS applications
