@@ -1,0 +1,27 @@
+{
+  "name": "kamevo.com",
+  "version": "1.0.0",
+  "description": "NodeJS version of kamevo.com",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zelkyo/node.git"
+  },
+  "author": "Axel De Sutter",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zelkyo/node/issues"
+  },
+  "homepage": "https://github.com/Zelkyo/node#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "mysql": "^2.15.0"
+  }
+}

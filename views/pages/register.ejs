@@ -1,0 +1,69 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css">
+	<link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100|Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="/register/css/style.max.css">
+    <link rel="stylesheet" href="/register/css/responsive.css">
+    <title>Kamevo - Inscription</title>
+</head>
+<body>
+	<div class="container">
+		<img src="img/kamico.png" alt="kamico" class="kamico">
+        <h3 class='title'>S'inscrire sur Kamevo.com</h3>
+        <% if(locals.flash && locals.flash.error){ %>
+            <div class="error">
+                <p class="error-message"><%= flash.error %></p>
+            </div>
+        <% } %>
+		<form action="" method="post" class="form">
+			<div class="inline">
+				<label for="firstname">Prénom</label>
+				<input type="text" name="firstname" class="iinput" id="firstname">
+			</div>
+			<div class="inline">
+				<label for="surname">Nom de famille</label>
+				<input type="text" name="surname" class="iinput" id="surname">
+			</div><br/>
+			<div class="inline">
+				<label for="pseudo">Pseudonyme</label>
+				<input type="text" name="pseudo" class="input" id="pseudo">
+			</div>
+			<div class="inline">
+				<label for="email">Adresse e-mail</label>
+				<input type="email" name="email" class="input" id="email">
+			</div>
+			<div class="inline">
+				<label for="password">Mot de passe</label>
+				<input type="password" name="password" class="input" id="password">
+			</div>
+			<div class="inline">
+				<label for="password2">Confirmer le mot de passe</label>
+				<input type="password" name="password2" class="input" id="password2">
+			</div>
+			<label for="category">Centres d'intérêts</label>
+			<select name="category" id="category">
+				<option value="default">Tout et n'importe quoi</option>
+				<option value="technology">Technologie & Informatique</option>
+				<option value="beauty">Beauté & Lifestyle</option>
+				<option value="gaming">Gaming & Jeux vidéos</option>
+				<option value="making">Bricolage & Création</option>
+				<option value="other">Quelque chose d'autre...</option>
+			</select>
+			<input type="submit" name="submit" value="Créer mon compte" class="submit">
+			<div class="cgu">
+				<input type="checkbox" name="cgu" class="checked" id="cgu">
+				<label for="cgu" class="label">J'ai lu et j'accepete les <a href="../cgu" class="cgus">Conditions générales d'utilisation</a></label>
+			</div>
+		</form>
+		<p>Déjà inscrit ? <a href="../connection/" class="signup">Se connecter.</a></p>
+		<div class="usefuls">
+			<div class="useful"><a href="../cgu" class="terms">Conditions générales d'utilisation</a></div>
+			<div class="useful">- <a href="../about" class="terms">Qu'est-ce que Kamevo ?</a></div>
+		</div>
+	</div>  
+</body>
+</html>
