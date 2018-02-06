@@ -1,0 +1,185 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-family: Roboto;
+	background-color: rgba(0,0,0,0.05); 
+}
+ul{
+	margin: 0;
+	padding: 0;
+}
+h4{
+	margin: 0;
+	padding: 0;
+}
+p{
+	margin: 0;
+	padding: 0;
+}
+.profile-header{
+	width: 100%;
+	height: 50vh;
+	background-size: cover;
+	background-position: 50% calc(50% + 30px);
+}
+.profile-picture{
+	width: 150px;
+	height: 150px;
+	margin-top: 40vh;
+	border: solid 3px white;
+	margin-left: calc((100% - 1200px)/2);
+	position: absolute;
+	background: white;
+}
+.profile-infos{
+	display: inline-block;
+	box-sizing: border-box;
+	margin: 0;
+	margin-top: 50vh;
+	padding: 12px;
+	width: 100%;
+	background-color: white;
+	border-bottom: solid 1px rgba(0,0,0,0.1);
+	padding-left: calc((100% - 850px)/2);
+}
+.profile-info{
+	font-size: 20px;
+	padding: 11px;
+	border-left: solid 1px rgba(0,0,0,0.1);
+}
+.profile-info:last-child{
+	border-right: solid 1px rgba(0,0,0,0.1);
+}
+.bold{
+	font-weight: 900;
+	color: #e67e22;
+	text-decoration: none;
+}
+.bold:last-child:hover{
+	cursor: pointer;
+}
+.red{
+	font-weight: 900;
+	color: rgba(192, 57, 43,1.0);;
+}
+.red:hover{
+	cursor: pointer;
+}
+.flux-container{
+	width: 575px;
+	padding-top: 60px;
+	padding-left: 35px;
+	display: block;
+	margin: auto;
+}
+.mt-10{
+	margin-top: -10px;
+}
+.profile-status{
+	position: absolute;
+	text-align: center;
+	box-sizing: border-box;
+	border-radius: 3px;
+	margin-top: calc(40vh + 130px);
+	margin-left: calc((100% - 1200px)/2);
+	background: #e67e22;
+	color: white;
+	font-size: 13px;
+	padding: 2px;
+	width: 156px;
+}
+
+.widget-faded{
+	display: none;
+}
+.w-faded{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 99999999;
+	left: 0;
+	top: 0;
+	background: rgba(0,0,0,0.6);
+	animation: fromO .3s;
+}
+.followers-box{
+	display: none;
+	position: fixed;
+	z-index: 99999999999999999999999999999999999999999999;
+	left: calc((100% - 345px)/2);
+	top: 10vh;
+	width: 375px;
+	box-sizing: border-box;
+	background-color: white;
+	border-radius: 3px;
+}
+.followers-displayed{
+	display: block;
+	animation: fromO .4s;
+}
+@keyframes fromO{
+	from{ opacity: 0;}
+	to{ opacity: 1;}
+}
+.followers-header{
+	padding: 8px;
+	width: 100%;
+	box-sizing: border-box;
+	border-bottom: solid 1px rgba(0,0,0,0.1);
+}
+.followers-followers{
+	max-height: 50vh;
+	overflow-y: auto;
+}
+#followers-closer{
+	margin-right: 10px;
+}
+#followers-closer:hover{
+	cursor: pointer;
+}
+.follower{
+	background-color: rgba(0,0,0,0.05);
+	width: 100%;
+	box-sizing: border-box;
+	padding: 5px;
+	display: inline-block;
+	position: relative;
+	border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.follower:hover{
+	background-color: rgba(0,0,0,0.01);
+}
+.follower-avatar{
+	width: 35px;
+	height: 35px;
+	display: inline-block;
+	object-fit: cover;
+	border-radius: 3px;
+}
+.follower-name{
+	position: absolute;
+	margin-left: 5px;
+	font-weight: 500;
+	font-size: 16px;
+}
+.follower-status{
+	font-size: 11px;
+	position: absolute;
+	margin-top: 18px;
+	margin-left: 5px;
+	color: rgba(0,0,0,0.5);
+}
+.followers-box a{
+	color: black;
+}
+.followers-loading{
+	width: 100%;
+	text-align: center;
+	background-color: rgba(0,0,0,0.05);
+	box-sizing: border-box;
+	padding: 8px;
+}
+.loading-gif{
+	width: 15px;
+	height: 15px;
+}

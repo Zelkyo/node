@@ -1,6 +1,7 @@
 let express = require('express');
 let bodyParser = require('body-parser');
 let session = require('express-session');
+let fs = require('fs');
 let app = express();
 
 // App setter
@@ -21,59 +22,31 @@ app.use(require('./middlewares/flash.js'));
 // Main page
 app.get('/', (req,res) => {
     if(req.session.userId !== '' && req.session.userId !== undefined){
-        res.redirect('/'+req.session.userId);
+        res.redirect('/');
     }else{
         res.redirect('/connect');
     }
 })
 
-// Registration
-app.get('/register', (req,res) => {
-    if(req.body){
-        res.render('pages/register', {body: req.body});
-    }else{
-        res.render('pages/register');
-    }
-})
+// Sign up + Sign in + Log out
+eval(fs.readFileSync('./includes/sign.js')+'');
+// API files
+eval(fs.readFileSync('./api/ajax.js')+'');
 
-app.post('/register', (req,res) => {
+// Profile page (must be the last app.get at the bottom)
+app.get('/:username', (req,res) => {
     let User = require('./models/user.js');
-    User.register(req.body, (response, data) => {
-        if(response === 'registered'){
-            res.render('pages/connect', {success: 'Vous pouvez vous connecter !'});
+    User.find(req.params.username, (data) => {
+        if(data !== 'unknown'){
+            User.countPublications(req.params.username, (publications) => {
+                User.getSubscribers(req.params.username, (subscribers) => {
+                    res.render('pages/profile.ejs', {user: data, countPublications: publications,subscribers: subscribers});
+                })
+            })
         }else{
-            req.flash('error', response)
-            res.redirect('/register');
-        }
-    })
-})
-
-// Connection
-app.get('/connect', (req,res) => {
-    res.render('pages/connect');
-})
-
-app.post('/connect', (req,res) => {
-    let User = require('./models/user.js');
-    User.login(req.body, (response, data) => {
-        if(response === 'connected'){
-            req.session.userId = data.id;
-            req.session.firstname = data.firstname;
-            req.session.surname = data.surname;
-            req.session.points = data.points;
-            req.session.registerDate = data.creation;
             res.redirect('/');
-        }else{
-            req.flash('error', response);
-            res.redirect('/connect');
         }
     })
-})
-
-// Disconnection
-app.get('/disconnect', (req,res) => {
-    req.session.id = undefined;
-    res.redirect('/connect');
 })
 
 app.listen(8080);

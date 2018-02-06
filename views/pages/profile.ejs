@@ -1,0 +1,67 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Kamevo.com - Profil de <%= user.username %></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css">
+	<link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">	
+	<link rel="icon" type="image/x-icon" href="../img/kamico.ico" />
+	<link rel="stylesheet" href="/profile/css/style.max.css">  
+	<link rel="stylesheet" href="/css/style.max.css"> 
+	 <link rel="stylesheet" href="/css/menu.css"> 
+	<link rel="stylesheet" href="/css/flux.css"> 
+	 <link rel="stylesheet" href="/css/responsive.css">    
+	 <link rel="stylesheet" href="/profile/css/responsive.css">    
+</head>
+<body>
+<%- include('menu') %>
+<style>.profile-header{background-image:url(/img/upload/<%= user.cover %>);}</style>
+<div class="profile-header">
+    <%- '<img src="../img/upload/' + user.avatar + '" alt="avatar" class="profile-picture">' %>
+	<div class="profile-infos">
+		<span class="profile-info z-info"><b><%= user.username %></b></span>
+		<span class="profile-info"><span class="bold"><%= user.points %></span> points</span>
+		<span class="profile-info"><span class="bold clickable"><%= locals.subscribers %></span> abonnés</span>
+		<span class="profile-info" id="publications"><span class="bold"><%= locals.countPublications %></span> publications</span>
+		<span class="profile-info">Depuis le <span class="bold"><%= user.creation.format('D MMM YYYY') %></span></span>
+		<span class="profile-info"><span class="bold">S'abonner</span></span>
+	</div>
+</div>
+<div class="widget-fade"></div>
+<div class="followers-box" id="<%- user.id %>">
+	<div class="followers-header">
+		<b>Abonnés <span class="nc-frigth orange" id="followers-closer">&times;</span></b>
+	</div>
+	<div class="followers-followers">
+		<div class="followers-loading">
+			<img src="/img/loading.gif" alt="loading-gif" class="loading-gif">
+		</div>
+	</div>
+</div>
+<div class="flux-container">
+	<div class="flux-hello mt-10">
+		<h4><b>Bienvenue sur le profil de <%= user.username %></b></h4>
+		<p><%= user.biography %></p>
+	</div><div class="flux-hello mt10">
+		<h4 align="center"><b>Fin des publications</b></h4>
+	</div>
+</div>
+<script type="text/javascript" src="/js/profile.js"></script>
+<script type="text/javascript" src="/js/mobile.js"></script>
+<script>
+$(document).ready(function() {
+	$.ajax({
+		type: 'GET',
+		url: 'http://localhost:8080/api/get',
+		dataType: 'json',
+		success: function(data){
+			console.log(data)
+			$('.flux-hello').append(data.name);
+		}
+	})
+})
+</script>
+</body>
+</html>

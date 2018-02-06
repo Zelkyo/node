@@ -1,8 +1,52 @@
 let connection = require('../config/database.js');
+let moment = require('moment');
 let md5 = require('md5');
 
 class User{
-    
+    constructor (row){
+        this.row = row
+    }
+
+    get id(){ return this.row.id }
+    get creation(){ return moment(this.row.creation) }
+    get username(){ return this.row.pseudo }
+    get cover(){ return this.row.cover }
+    get avatar(){ return this.row.avatar }
+    get points(){ return this.row.points }
+    get biography(){ return this.row.biography }
+
+    // Find user and get infos
+    static find(data, callback) {
+        connection.query('SELECT * FROM users WHERE pseudo = ?', [data.replace('.', ' ')], (err, rows) => {
+            if (err) throw err;
+            if(rows.length > 0){
+                callback(new User(rows[0]))
+            }else{
+                callback('unknown')
+            }
+        })
+    }
+
+    static countPublications(data, callback) {
+        connection.query('SELECT * FROM users WHERE pseudo = ?', [data.replace('.', ' ')], (err, rows) => {
+            if(err) throw err
+            connection.query('SELECT * FROM publications WHERE author = ?', [rows[0].id], (err, rows) => {
+                if (err) throw err;
+                callback(rows.length)
+            })
+        })
+    }
+
+    static getSubscribers(data, callback) {
+        connection.query('SELECT * FROM users WHERE pseudo = ?', [data.replace('.', ' ')], (err, rows) => {
+            if(err) throw err
+            connection.query('SELECT * FROM subs WHERE profile = ?', [rows[0].id], (err, rows) => {
+                if (err) throw err;
+                callback(rows.length)
+            })
+        })
+    }
+
     // User loging in
     static login(data,callback) {
         if(data.email && data.password){

@@ -1,0 +1,77 @@
+body{
+    background: #34495e;
+}
+header{
+    background: #2c3e50;
+}
+.top-search-bar{
+    background: #34495e;
+    border: #2c3e50;
+}
+.top-item{
+    color: rgba(255,255,255,0.6);
+	border-bottom: solid 2px rgba(0,0,0,0.1);
+}
+.top-search-bar::-moz-placeholder{
+    color: rgba(255,255,255,0.4);
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: rgba(255,255,255,0.4);
+}
+::-moz-placeholder { /* Firefox 19+ */
+    color: rgba(255,255,255,0.4);
+}
+:-ms-input-placeholder { /* IE 10+ */
+    color: rgba(255,255,255,0.4);
+}
+:-moz-placeholder { /* Firefox 18- */
+    color: rgba(255,255,255,0.4);
+}
+/* Widgets */
+.profile-widget{
+    background: #2c3e50;
+}
+.profile-widget-line{
+    color: rgba(255,255,255,0.4);
+    font-weight: 100;
+    font-size: 14px;
+}
+.profile-picture{
+    border: #2c3e50 2px solid;
+}
+/* Flux */
+.flux-hello{
+    background: #2c3e50;
+}
+.flux-hello p{
+    color: rgba(255,255,255,0.4);
+}
+.flux-hello b{
+    font-weight: 100;
+    font-style: italic;
+    color: rgba(255,255,255,0.4);
+}
+.flux-block{
+    background: #2c3e50;
+}
+.flux-block p{
+    color: rgba(255,255,255,0.4);
+}
+progress{
+    border: solid 3px #2c3e50;
+    margin-bottom: -2px;
+    opacity: 0.9;
+}
+.tools-comment{
+    /* color: rgba(255,255,255,0.4);
+    font-weight: 100; */
+    color: black;
+    font-weight: 100;
+    margin-top: 2px;
+}
+.nc-norange{
+    color: black;
+}
+.orange{
+    opacity: 0.9;
+}
